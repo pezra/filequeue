@@ -18,3 +18,7 @@ Originally written by [daddz](http://www.github.com/daddz) and found in [this gi
       => "an item"
       
 See `spec/filequeue_spec.rb` for more usage details
+
+## Continuous Integration
+
+[![Build Status](http://travis-ci.org/maxogden/filequeue.png)](http://travis-ci.org/maxogden/filequeue)
