@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
     "README.md"
   ]
   s.files = [
+    ".gemtest",
     ".rspec",
     "LICENSE",
     "README.md",
@@ -25,6 +26,7 @@ Gem::Specification.new do |s|
     "file_queue.rb",
     "filequeue.gemspec",
     "lib/filequeue.rb",
+    "pkg/filequeue-0.0.1.gem",
     "spec/filequeue_spec.rb",
     "spec/spec_helper.rb"
   ]
