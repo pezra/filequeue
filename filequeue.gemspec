@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{filequeue}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Max Ogden", "daddz"]
@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
     "file_queue.rb",
     "filequeue.gemspec",
     "lib/filequeue.rb",
-    "pkg/filequeue-0.0.1.gem",
+    "pkg/filequeue-0.0.2.gem",
     "spec/filequeue_spec.rb",
     "spec/spec_helper.rb"
   ]
