@@ -46,7 +46,6 @@ class FileQueue
     safe_open 'w' do |file| end
   end
 	
-  private
   def safe_open(mode)
     File.open(@file_name, mode) do |file|
       file.flock File::LOCK_EX

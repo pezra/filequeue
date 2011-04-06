@@ -93,4 +93,9 @@ describe FileQueue do
       subject.empty?.should be_true
     end
   end
+  
+  describe '#safe_open' do
+    pending 'should lock files when doing IO (see flock_test_problem.rb)' do
+    end
+  end
 end
