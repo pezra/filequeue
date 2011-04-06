@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "file_queue.rb",
+    "filequeue.gemspec",
     "lib/filequeue.rb",
     "spec/filequeue_spec.rb",
     "spec/spec_helper.rb"
