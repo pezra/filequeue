@@ -45,12 +45,30 @@ class FileQueue
   def clear
     safe_open 'w' do |file| end
   end
-	
+
+  protected
+
   def safe_open(mode)
     File.open(@file_name, mode) do |file|
-      file.flock File::LOCK_EX
+      lock file
       yield file
-      file.flock File::LOCK_UN
     end
   end
+
+  # Locks the queue file for exclusive access.
+  #
+  # Raises `FileLockError` if unable to acquire a lock.
+  #
+  # Return is undefined.
+  def lock(file)
+    tries = 1000
+    until tries == 0 || lock_acquired = file.flock(File::LOCK_NB|File::LOCK_EX)
+      tries -= 1
+      Thread.pass
+    end
+
+    (raise FileLockError, "Queue file appears to be permanently lockecd") unless lock_acquired
+  end
+
+  FileLockError = Class.new(Timeout::Error)
 end
