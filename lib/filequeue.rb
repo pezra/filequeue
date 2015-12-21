@@ -1,3 +1,5 @@
+require 'timeout'
+
 class FileQueue
 	attr_accessor :file_name, :delimiter
 	
