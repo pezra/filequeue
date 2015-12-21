@@ -8,10 +8,10 @@ Gem::Specification.new do |s|
   s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Max Ogden", "daddz"]
+  s.authors = ["Max Ogden", "daddz", "Peter Williams"]
   s.date = %q{2011-04-05}
   s.description = %q{A simple file based queue in Ruby}
-  s.email = %q{max@maxogden.com}
+  s.email = %q{pezra@barelyenough.org}
   s.extra_rdoc_files = [
     "LICENSE",
     "README.md"
@@ -32,22 +32,13 @@ Gem::Specification.new do |s|
   ]
   s.homepage = %q{http://github.com/maxogden/filequeue}
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.4.2}
   s.summary = %q{A simple file based queue in Ruby}
   s.test_files = [
     "spec/filequeue_spec.rb",
     "spec/spec_helper.rb"
   ]
 
-  if s.respond_to? :specification_version then
-    s.specification_version = 3
-
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-    else
-    end
-  else
-  end
-
-  s.add_development_dependency :rspec, "~> 3.3"
+  s.add_development_dependency "rspec", "~> 3.3"
+  s.add_development_dependency "rake"
 end
 
