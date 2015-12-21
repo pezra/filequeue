@@ -47,5 +47,7 @@ Gem::Specification.new do |s|
     end
   else
   end
+
+  s.add_development_dependency :rspec, "~> 3.3"
 end
 
