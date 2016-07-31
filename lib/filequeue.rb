@@ -34,6 +34,9 @@ class FileQueue
 
   def length
     count = 0
+    unless(File.exist?(@file_name))
+      return 0
+    end
     safe_open 'r' do |file|
       count = file.read.count @delimiter
     end
