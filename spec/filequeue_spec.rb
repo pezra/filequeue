@@ -95,11 +95,16 @@ describe FileQueue do
   end
   
   describe '#safe_open' do
-    skip 'should lock files when doing IO (implemented, but cannot test)' do
-      # After reading the definition of File#flock more closely (http://www.ruby-doc.org/core/classes/File.html#M000040) I'm realizing that the LOCK_EX is process wide and won't block access to anything inside the current process. This means that in the same process that you lock a file in you will not be blocked from that file, so in a test you can't simulate what it is like to be blocked access without spawning a new process.
-      # From what I can tell 1.8.7 can't really spawn new processes. 1.9.2 has Process#spawn which in theory would allow the testing of the flocking LOCK_EX block but I have not tested it.
+    it 'should lock files when doing IO' do
+      # Expect that we lock files
+      File.any_instance.should_receive(:flock).and_return(0)
+
+      subject.push("things")
     end
 
-    skip 'should raise FileLockError if unable to acquire lock' # see above
+    it 'should raise FileLockError if unable to acquire lock' do
+      File.open(test_file).flock(File::LOCK_EX | File::LOCK_NB)
+      lambda { subject.push("example") }.should raise_exception(FileQueue::FileLockError)
+    end
   end
 end
