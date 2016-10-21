@@ -22,12 +22,12 @@ class FileQueue
   def pop
     value = nil
     rest = nil
-    safe_open 'r' do |file|
+    safe_open 'r+' do |file|
       value = file.gets @delimiter
       rest = file.read
-    end
-    safe_open 'w+' do |file|
+      file.rewind
       file.write rest
+      file.truncate(file.pos)
     end
     value ? value[0..-(@delimiter.length) - 1] : nil
   end
