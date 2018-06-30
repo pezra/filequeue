@@ -32,6 +32,15 @@ See `spec/filequeue_spec.rb` for more usage details
 * `empty?`
 * `clear`
 
+## Dependencies
+
+Locking is delegated to the excellent [`Filelock`](https://github.com/sheerun/filelock) gem.
+All of the `Filelock`'s [caveats](https://github.com/sheerun/filelock#faq) apply.
+
+## Limitations
+
+* NFS is [not supported](https://github.com/sheerun/filelock#faq)
+
 ## Authorship
 
 * Origially written by [daddz](http://www.github.com/daddz) and found in [this gist](https://gist.github.com/352509).
