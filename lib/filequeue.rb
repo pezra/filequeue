@@ -1,4 +1,5 @@
 require 'timeout'
+require 'filelock'
 
 class FileQueue
 	attr_accessor :file_name, :delimiter
@@ -52,25 +53,21 @@ class FileQueue
 
   def safe_open(mode)
     File.open(@file_name, mode) do |file|
-      lock file
+   
+     lock file do
       yield file
+     end
+    
     end
   end
 
   # Locks the queue file for exclusive access.
   #
-  # Raises `FileLockError` if unable to acquire a lock.
-  #
-  # Return is undefined.
+  # Raises `Filelock::WaitTimeout` if unable to acquire a lock.
+  # Default timeout is 1 day
   def lock(file)
-    tries = 1000
-    until tries == 0 || lock_acquired = file.flock(File::LOCK_NB|File::LOCK_EX)
-      tries -= 1
-      Thread.pass
+    Filelock file do 
+      yield file
     end
-
-    (raise FileLockError, "Queue file appears to be permanently locked") unless lock_acquired
   end
-
-  FileLockError = Class.new(Timeout::Error)
 end
