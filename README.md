@@ -1,6 +1,5 @@
+# FileQueue [![Build Status](https://travis-ci.org/pezra/filequeue.svg)](https://travis-ci.org/pezra/filequeue)
 
-
-## FileQueue [![Build Status](https://travis-ci.org/pezra/filequeue.svg)](https://travis-ci.org/pezra/filequeue)
 A simple file based queue written in Ruby that uses the battle-tested [`Filelock`](https://github.com/sheerun/filelock) gem to push and pop items into a queue. It's not web scale but is nice for lightweight async queuing apps.
 
 ## Install
@@ -15,10 +14,10 @@ gem install filequeue
 queue = FileQueue.new 'queue_party.txt'
 
 queue.push "an item"
-#  => true
-      
+# => true
+
 queue.pop
-#  => "an item"
+# => "an item"
 ```
 
 See `spec/filequeue_spec.rb` for more usage details
