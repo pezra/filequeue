@@ -11,15 +11,27 @@ Originally written by [daddz](http://www.github.com/daddz) and found in [this gi
 
 ## Usage
 
-    queue = FileQueue.new 'queue_party.txt'
-    
-    queue.push "an item"
-      => true
+```ruby
+queue = FileQueue.new 'queue_party.txt'
+
+queue.push "an item"
+#  => true
       
-    queue.pop
-      => "an item"
-      
+queue.pop
+#  => "an item"
+```
+
 See `spec/filequeue_spec.rb` for more usage details
+
+## Docs
+
+`FileQueue` has the following class methods:
+
+* `push` (alias `<<`)
+* `pop`
+* `length`
+* `empty?`
+* `clear`
 
 ## Continuous Integration
 
