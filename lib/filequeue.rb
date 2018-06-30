@@ -69,7 +69,7 @@ class FileQueue
       Thread.pass
     end
 
-    (raise FileLockError, "Queue file appears to be permanently lockecd") unless lock_acquired
+    (raise FileLockError, "Queue file appears to be permanently locked") unless lock_acquired
   end
 
   FileLockError = Class.new(Timeout::Error)
