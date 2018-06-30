@@ -32,7 +32,3 @@ See `spec/filequeue_spec.rb` for more usage details
 * `length`
 * `empty?`
 * `clear`
-
-## Continuous Integration
-
-[![Build Status](http://travis-ci.org/maxogden/filequeue.png)](http://travis-ci.org/maxogden/filequeue)
