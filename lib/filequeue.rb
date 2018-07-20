@@ -1,7 +1,7 @@
 require 'timeout'
 
 class FileQueue
-	attr_accessor :file_name, :delimiter
+  attr_accessor :file_name, :delimiter
 
   def initialize(file_name, delimiter="\n")
     @delimiter = delimiter
