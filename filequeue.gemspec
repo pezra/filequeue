@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
-    "file_queue.rb",
     "filequeue.gemspec",
     "lib/filequeue.rb",
     "pkg/filequeue-0.0.2.gem",
