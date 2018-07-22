@@ -1,26 +1,47 @@
+# FileQueue [![Build Status](https://travis-ci.org/pezra/filequeue.svg)](https://travis-ci.org/pezra/filequeue)
 
-
-## FileQueue [![Build Status](https://travis-ci.org/pezra/filequeue.svg)](https://travis-ci.org/pezra/filequeue)
-...is a simple file based queue written in Ruby that uses the Ruby `File` class in standard library to push and pop items into a queue. It's not web scale but is nice for lightweight async queuing apps.
-
-Originally written by [daddz](http://www.github.com/daddz) and found in [this gist](https://gist.github.com/352509). Thanks, daddz!
+A simple file based queue written in Ruby that uses the battle-tested [`Filelock`](https://github.com/sheerun/filelock) gem to push and pop items into a queue. It's not web scale but is nice for lightweight async queuing apps.
 
 ## Install
 
-    gem install filequeue
+```ruby
+gem install filequeue
+```
 
 ## Usage
 
-    queue = FileQueue.new 'queue_party.txt'
-    
-    queue.push "an item"
-      => true
-      
-    queue.pop
-      => "an item"
-      
+```ruby
+queue = FileQueue.new 'queue_party.txt'
+
+queue.push "an item"
+# => true
+
+queue.pop
+# => "an item"
+```
+
 See `spec/filequeue_spec.rb` for more usage details
 
-## Continuous Integration
+## Docs
 
-[![Build Status](http://travis-ci.org/maxogden/filequeue.png)](http://travis-ci.org/maxogden/filequeue)
+`FileQueue` has the following class methods:
+
+* `push` (alias `<<`)
+* `pop`
+* `length`
+* `empty?`
+* `clear`
+
+## Dependencies
+
+Locking is delegated to the excellent [`Filelock`](https://github.com/sheerun/filelock) gem.
+All of the `Filelock`'s [caveats](https://github.com/sheerun/filelock#faq) apply.
+
+## Limitations
+
+* NFS is [not supported](https://github.com/sheerun/filelock#faq)
+
+## Authorship
+
+* Origially written by [daddz](http://www.github.com/daddz) and found in [this gist](https://gist.github.com/352509).
+* Ported to a Rubygem by [@pezra](https://github.com/pezra).
