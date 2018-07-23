@@ -5,3 +5,8 @@ rvm:
   - jruby
   - rbx-2
 sudo: false
+matrix:
+  allow_failures:
+    - ree
+    - jruby
+    - rbx-2
