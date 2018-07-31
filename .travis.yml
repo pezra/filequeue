@@ -1,12 +1,12 @@
 rvm:
-  - 2.1
-  - 2.2
-  - ree
+  - ruby
+  - ruby-head
   - jruby
-  - rbx-2
+  - rbx-3
 sudo: false
+gemfile: Gemfile.ci
 matrix:
   allow_failures:
-    - ree
-    - jruby
-    - rbx-2
+    - rvm: jruby
+    - rvm: rbx-3
+    - rvm: ruby-head
