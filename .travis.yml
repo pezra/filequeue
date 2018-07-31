@@ -7,6 +7,4 @@ sudo: false
 gemfile: Gemfile.ci
 matrix:
   allow_failures:
-    - rvm: jruby
-    - rvm: rbx-3
     - rvm: ruby-head
