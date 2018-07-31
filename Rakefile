@@ -7,9 +7,9 @@ begin
     gem.name = "filequeue"
     gem.summary = %Q{A simple file based queue in Ruby}
     gem.description = %Q{A simple file based queue in Ruby}
-    gem.email = "max@maxogden.com"
+    gem.email = "pezra@barelyenough.org"
     gem.homepage = "http://github.com/maxogden/filequeue"
-    gem.authors = ["Max Ogden", "daddz"]
+    gem.authors = ["Peter Williams", "Max Ogden", "daddz"]
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
