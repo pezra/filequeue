@@ -75,7 +75,7 @@ class FileQueue
       sleep(rand(DELAY_RANGE))
     end
 
-    (raise FileLockError, "Queue file appears to be permanently lockecd") unless lock_acquired
+    (raise FileLockError, "Queue file appears to be permanently locked") unless lock_acquired
   end
 
   FileLockError = Class.new(Timeout::Error)

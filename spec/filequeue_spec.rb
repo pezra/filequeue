@@ -65,7 +65,7 @@ describe FileQueue do
 
           ->(){
             ->(){ subject.push("test") }.should raise_error(FileQueue::FileLockError)
-          }.should complete_within(lock_timeout_sec * 1.1)
+          }.should complete_within(lock_timeout_sec * 1.2)
         end
       end
     end
@@ -110,7 +110,7 @@ describe FileQueue do
 
           ->(){
             ->(){ subject.pop }.should raise_error(FileQueue::FileLockError)
-          }.should complete_within(lock_timeout_sec * 1.1)
+          }.should complete_within(lock_timeout_sec * 1.2)
         end
       end
     end
