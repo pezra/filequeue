@@ -1,11 +1,12 @@
 require 'timeout'
 
 class FileQueue
-  attr_accessor :file_name, :delimiter
+  attr_accessor :file_name, :delimiter, :lock_timeout
 
-  def initialize(file_name, delimiter="\n")
+  def initialize(file_name, delimiter="\n", lock_timeout: 10)
     @delimiter = delimiter
     @file_name = file_name
+    @lock_timeout = lock_timeout
   end
 
   def push(obj)
@@ -59,16 +60,19 @@ class FileQueue
     end
   end
 
-  # Locks the queue file for exclusive access.
+  DELAY_RANGE = (0..0.01).freeze
+
+  # Locks the queue file for exclusive access. This will gives up
+  # after `lock_timeout` seconds.
   #
   # Raises `FileLockError` if unable to acquire a lock.
   #
   # Return is undefined.
   def lock(file)
-    tries = 1000
-    until tries == 0 || lock_acquired = file.flock(File::LOCK_NB|File::LOCK_EX)
-      tries -= 1
-      Thread.pass
+    deadline = (Time.now + lock_timeout)
+
+    until Time.now >= deadline || lock_acquired = file.flock(File::LOCK_NB|File::LOCK_EX)
+      sleep(rand(DELAY_RANGE))
     end
 
     (raise FileLockError, "Queue file appears to be permanently lockecd") unless lock_acquired
