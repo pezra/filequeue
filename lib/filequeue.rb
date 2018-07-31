@@ -1,8 +1,8 @@
 require 'timeout'
 
 class FileQueue
-	attr_accessor :file_name, :delimiter
-	
+  attr_accessor :file_name, :delimiter
+
   def initialize(file_name, delimiter="\n")
     @delimiter = delimiter
     @file_name = file_name
@@ -18,16 +18,15 @@ class FileQueue
   end
 
   alias << push
-	
+
   def pop
     value = nil
-    rest = nil
-    safe_open 'r' do |file|
+    safe_open 'r+' do |file|
       value = file.gets @delimiter
       rest = file.read
-    end
-    safe_open 'w+' do |file|
-      file.write rest
+      file.rewind
+      file.truncate(0)
+      file.write(rest)
     end
     value ? value[0..-(@delimiter.length) - 1] : nil
   end
